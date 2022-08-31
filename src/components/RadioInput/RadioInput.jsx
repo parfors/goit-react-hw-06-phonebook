@@ -72,5 +72,3 @@ RadioInput.propTypes = {
   onChange: PropTypes.func,
   radioOptions: PropTypes.array,
 };
-
-// console.log('d');
