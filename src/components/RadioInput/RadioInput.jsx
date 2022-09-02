@@ -17,8 +17,7 @@ export const RadioInput = ({ onChangeBtn, radioOptions }) => {
     if (localStorageData) {
       setColor(localStorageData.color);
     }
-    // eslint-disable-next-line
-  }, []);
+  }, [value]);
 
   return (
     <>

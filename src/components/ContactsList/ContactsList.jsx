@@ -2,7 +2,7 @@ import { ListStyled, ContactItem } from 'components';
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 
-const ContactsListTest = ({ contacts, onBtnDelete }) => {
+const ContactsListTest = ({ contacts }) => {
   return (
     <>
       <ListStyled>
@@ -11,7 +11,8 @@ const ContactsListTest = ({ contacts, onBtnDelete }) => {
             key={id}
             name={name}
             number={number}
-            onBtnDelete={() => onBtnDelete(id)}
+            id={id}
+            // onBtnDelete={() => onBtnDelete(id)}
           />
         ))}
       </ListStyled>
