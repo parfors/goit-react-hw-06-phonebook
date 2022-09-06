@@ -1,23 +1,15 @@
-import { useState, useEffect } from 'react';
 import { InputRadioStyled, LabelRadio } from 'components';
 import PropTypes from 'prop-types';
-import { useLocalStorage } from 'hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { setColor } from 'redux/color-Slice';
 
-export const RadioInput = ({ onChangeBtn, radioOptions }) => {
-  const [color, setColor] = useState('');
-  const [value] = useLocalStorage('contacts', []);
+export const RadioInput = ({ radioOptions }) => {
+  const color = useSelector(state => state.contacts.color);
+  const dispatch = useDispatch();
 
   const onChange = e => {
-    setColor(e.target.value);
-    onChangeBtn(e.currentTarget.value);
+    dispatch(setColor(e.target.value));
   };
-
-  useEffect(() => {
-    const localStorageData = value;
-    if (localStorageData) {
-      setColor(localStorageData.color);
-    }
-  }, [value]);
 
   return (
     <>

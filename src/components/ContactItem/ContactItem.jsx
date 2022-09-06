@@ -7,7 +7,7 @@ import {
 import PropTypes from 'prop-types';
 import { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/store';
+import { removeContact } from 'redux/contact-Slice';
 
 const ContactItemTest = ({ name, number, id }) => {
   const [agreement, setAgreement] = useState(false);
