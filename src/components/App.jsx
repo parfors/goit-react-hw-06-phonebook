@@ -12,9 +12,9 @@ import { setFilter } from 'redux/filter-Slice';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items.value);
-  const filter = useSelector(state => state.contacts.filter.filter);
-  const color = useSelector(state => state.contacts.color.color);
+  const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.contacts.filter);
+  const color = useSelector(state => state.contacts.color);
 
   const formSubmitHandler = data => {
     const normalizedData = data.name.toLowerCase();
@@ -27,6 +27,7 @@ export const App = () => {
 
   const radioOptions = ['green', 'red', 'grey'];
   const normalizedFilter = filter.toLowerCase();
+  console.log(contacts);
   const visibleContacts = contacts.filter(el =>
     el.name.toLowerCase().includes(normalizedFilter)
   );

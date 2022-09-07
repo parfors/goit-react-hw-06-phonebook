@@ -4,21 +4,32 @@ import {
   PAUSE,
   PERSIST,
   persistStore,
+  persistReducer,
   PURGE,
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import persistedColorSlice from './color-Slice';
-import persistedContactSlice from './contact-Slice';
-import persistedFilterSlice from './filter-Slice';
+import storage from 'redux-persist/lib/storage';
+import contactsReducer from './contact-Slice';
+import filterReducer from './filter-Slice';
+import colorReducer from './color-Slice';
+
+const rootReducer = combineReducers({
+  items: contactsReducer,
+  filter: filterReducer,
+  color: colorReducer,
+});
+
+const persistConfig = {
+  key: 'contacts',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: {
-    contacts: combineReducers({
-      items: persistedContactSlice,
-      filter: persistedFilterSlice,
-      color: persistedColorSlice,
-    }),
+    contacts: persistedReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
